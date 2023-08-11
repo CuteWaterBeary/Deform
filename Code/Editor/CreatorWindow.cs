@@ -58,8 +58,8 @@ namespace DeformEditor
 			{ Category.WIP, true }
 		};
 
-		[MenuItem ("Window/Deform/Creator", priority = 10000)]
-		[MenuItem ("Tools/Deform/Creator Window", priority = 10000)]
+		// [MenuItem ("Window/Deform/Creator", priority = 10000)]
+		[MenuItem ("Mesh+Bones/Deform/Creator Window", priority = 10000)]
 		public static void ShowWindow ()
 		{
 			GetWindow<CreatorWindow> ("Creator", true);
@@ -199,7 +199,7 @@ namespace DeformEditor
 					if (!PrefabUtility.IsPartOfPrefabAsset (target))
 					{
 						T deformable = null;
-						
+
 						// Check if there's an LOD Group
 						var lodGroup = target.GetComponent<LODGroup>();
 
@@ -210,7 +210,7 @@ namespace DeformEditor
 							(
 								title: "Deformable LOD Group",
 								message: $"You just tried to add a {typeof(T).Name} to an {nameof(LODGroup)}. Would you like to make its childen Deformable?",
-								ok: "Yes", 
+								ok: "Yes",
 								cancel:"No"
 							))
 							{
@@ -234,7 +234,7 @@ namespace DeformEditor
 								))
 								{
 									GroupDeformer group = Undo.AddComponent<GroupDeformer>(target.gameObject);
-									
+
 									foreach (var d in justAddedDeformablesPool)
 									{
 										Undo.RecordObject(d, "Added deformer");
@@ -242,10 +242,10 @@ namespace DeformEditor
 									}
 								}
 							}
-							
+
 							return;
 						}
-						
+
 						// Since there wasn't an LOD group, check if there's already a Deformable
 						deformable = target.GetComponent<T>();
 						// If there isn't, we can add one
@@ -329,7 +329,7 @@ namespace DeformEditor
 						var rotation = Quaternion.Euler (attribute.XRotation, attribute.YRotation, attribute.ZRotation);
 						newGameObject.transform.SetPositionAndRotation (center, rotation);
 					}
-					
+
 					var newDeformer = newGameObject.AddComponent (attribute.Type) as Deformer;
 
 					var deformables = GetComponents<Deformable> (selectedGameObjects);
@@ -395,7 +395,7 @@ namespace DeformEditor
 
 			return sum / gameObjects.Length;
 		}
-		
+
 		public static IEnumerable<DeformerAttribute> GetAllDeformerAttributes()
 		{
 #if CAN_USE_TYPE_CACHE
@@ -425,7 +425,7 @@ namespace DeformEditor
 					{
 						types = e.Types.Where(t => t != null);
 					}
-					
+
 					foreach (var type in types)
 					{
 						if (type.IsSubclassOf(typeof(Deformer)))

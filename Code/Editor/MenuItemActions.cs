@@ -8,7 +8,7 @@ namespace DeformEditor
 {
 	public static class MenuItemActions
 	{
-		[MenuItem ("Tools/Deform/Actions/Clean All Deformables", priority = 10100)]
+		[MenuItem ("Mesh+Bones/Deform/Actions/Clean All Deformables", priority = 10100)]
 		public static void CleanAllDeformables ()
 		{
 			var deformables = GameObject.FindObjectsOfType<Deformable> ();
@@ -16,7 +16,7 @@ namespace DeformEditor
 			Undo.RecordObjects (deformables, "Cleaned All Deformables");
 			foreach (var deformable in deformables)
 				deformable.DeformerElements.RemoveAll (t => t.Component == null);
-			
+
 			var groupDeformers = GameObject.FindObjectsOfType<GroupDeformer> ();
 
 			Undo.RecordObjects (groupDeformers, "Cleaned All Deformables");
@@ -35,7 +35,7 @@ namespace DeformEditor
 			Undo.DestroyObjectImmediate (deformable);
 		}
 
-		[MenuItem ("Tools/Deform/Actions/Strip All Deformables", priority = 10101)]
+		[MenuItem ("Mesh+Bones/Deform/Actions/Strip All Deformables", priority = 10101)]
 		public static void StripAllDeformablesFromMeshes ()
 		{
 			var deformables = GameObject.FindObjectsOfType<Deformable> ();
@@ -48,7 +48,7 @@ namespace DeformEditor
 			EditorUtility.DisplayDialog ("Stripped All Deformables", $"{deformables.Length} found and stripped.", "OK");
 		}
 
-		[MenuItem ("Tools/Deform/Actions/Strip Selected Deformables", priority = 10102)]
+		[MenuItem ("Mesh+Bones/Deform/Actions/Strip Selected Deformables", priority = 10102)]
 		public static void StripSelectedDeformablesFromMeshes ()
 		{
 			var selections = Selection.gameObjects;
@@ -62,7 +62,7 @@ namespace DeformEditor
 				}
 			}
 		}
-		[MenuItem ("Tools/Deform/Actions/Strip Selected Deformables", validate = true)]
+		[MenuItem ("Mesh+Bones/Deform/Actions/Strip Selected Deformables", validate = true)]
 		private static bool CanStripDeformableFromMesh ()
 		{
 			var selections = Selection.gameObjects;
@@ -72,7 +72,7 @@ namespace DeformEditor
 			return false;
 		}
 
-		[MenuItem ("Tools/Deform/Actions/Make Immediate Children Deformable", priority = 10103)]
+		[MenuItem ("Mesh+Bones/Deform/Actions/Make Immediate Children Deformable", priority = 10103)]
 		public static void MakeImmediateChildrenDeformables ()
 		{
 			var newSelection = new HashSet<GameObject> ();
@@ -92,8 +92,8 @@ namespace DeformEditor
 
 			Selection.objects = newSelection.ToArray ();
 		}
-		
-		[MenuItem ("Tools/Deform/Actions/Make All Children Deformable", priority = 10104)]
+
+		[MenuItem ("Mesh+Bones/Deform/Actions/Make All Children Deformable", priority = 10104)]
 		public static void MakeAllChildrenDeformables ()
 		{
 			var newSelection = new HashSet<GameObject> ();
@@ -115,10 +115,10 @@ namespace DeformEditor
 			Selection.objects = newSelection.ToArray ();
 		}
 
-		[MenuItem ("Tools/Deform/Report Bug", priority = 10203)]
-		public static void ReportBug ()
-		{
-			Application.OpenURL ("https://github.com/keenanwoodall/Deform/issues/new");
-		}
+		// [MenuItem ("Mesh+Bones/Deform/Report Bug", priority = 10203)]
+		// public static void ReportBug ()
+		// {
+		// 	Application.OpenURL ("https://github.com/keenanwoodall/Deform/issues/new");
+		// }
 	}
 }

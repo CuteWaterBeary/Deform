@@ -32,12 +32,12 @@ namespace DeformEditor
 
 		private Vector2 scrollPosition = Vector2.zero;
 
-		[MenuItem ("Window/Deform/Credits", priority = 10200)]
-		[MenuItem ("Tools/Deform/Credits", priority = 10200)]
-		public static void ShowWindow ()
-		{
-			GetWindow<CreditsWindow> ("Credits", true);
-		}
+		// [MenuItem ("Window/Deform/Credits", priority = 10200)]
+		// [MenuItem ("Tools/Deform/Credits", priority = 10200)]
+		// public static void ShowWindow ()
+		// {
+		// 	GetWindow<CreditsWindow> ("Credits", true);
+		// }
 
 		private void OnGUI ()
 		{
@@ -79,9 +79,9 @@ namespace DeformEditor
 					"Thanks to Alexander Ameye, William Besnard, Raphael Herdlicka and David Carney for beta testing and providing crucial feedback.",
 					Styles.CreditsText
 				);
-				
+
 				EditorGUILayout.Space ();
-				
+
 				EditorGUILayout.LabelField
 				(
 					"Additional massive thanks to the following contributors for helping develop Deform into the best tool it can be:\nsabresaurus, Brullworfel, favoyang, and HitCache",

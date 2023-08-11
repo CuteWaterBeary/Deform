@@ -92,7 +92,7 @@ namespace DeformEditor
 				EditorUtility.SetDirty (SettingsAsset);
 			}
 		}
-		
+
 		public static BuildStrippingMode BuildStrippingMode
 		{
 			get => SettingsAsset.buildStripping;
@@ -107,9 +107,9 @@ namespace DeformEditor
 		{
 			Selection.activeObject = SettingsAsset;
 		}
-		
-		[MenuItem ("Window/Deform/Settings", priority = 10000)]
-		[MenuItem ("Tools/Deform/Settings", priority = 10000)]
+
+		// [MenuItem ("Window/Deform/Settings", priority = 10000)]
+		[MenuItem ("Mesh+Bones/Deform/Deform Settings", priority = 10000)]
 		public static void ShowWindow ()
 		{
 			SelectSettingsAsset();
